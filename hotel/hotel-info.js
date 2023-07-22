@@ -9,11 +9,16 @@ function descriptionAppear() {
         description.style.display = 'none';
       });
 
-        roomDescriptions[index].style.display = 'block';
-        chooseRoom.style.display = 'none';
+      rooms.forEach((room) => {
+        room.classList.remove('first-floor__active');
+      });
+      room.classList.add('first-floor__active');
+      roomDescriptions[index].style.display = 'block';
+      chooseRoom.style.display = 'none';
     });
   });
 }
+
 descriptionAppear();
 
 const bookBtns = document.querySelectorAll('.book-btn');

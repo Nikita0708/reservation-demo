@@ -42,6 +42,9 @@ footer {
         background-color: lightblue;
     }
 }
+.first-floor__active {
+    background-color: lightblue;
+}
 .room-desription {
     position: absolute;
     right: 100px;
