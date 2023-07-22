@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Booking</h1>
+    </header>
+    <main>
+      <form action="">
+        <label for="select-place">Город:</label>
+        <input type="text" class="select-place" id="select-place" />
+        <label for="check-in-date">Дата Поселения:</label>
+        <input type="date" id="check-in-date" />
+        <label for="check-out-date">Дата выселения:</label>
+        <input type="date" id="check-out-date" />
+        <label for="select-people">Кол-во человек:</label>
+        <select id="select-people">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+        <button type="submit">Найти</button>
+      </form>
+    </main>
+    <footer>
+      <p>2023 Booking</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

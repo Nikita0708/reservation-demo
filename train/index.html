@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Ticket</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 30px;
+      }
+
+      h1 {
+        color: #007bff;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="number"],
+      input[type="date"],
+      input[type="text"],
+      select {
+        width: 200px;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+      button {
+        padding: 8px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #bookingSection {
+        display: none;
+      }
+
+      #fareDetails {
+        white-space: pre-line;
+        margin-bottom: 20px;
+      }
+
+      #bookingStatus {
+        font-weight: bold;
+        color: #008000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Train Ticket Booking</h1>
+    <form action="">
+      <input
+        type="text"
+        class="select-start"
+        id="select-start"
+        placeholder="Откуда"
+      />
+      <input
+        type="text"
+        class="select-start"
+        id="select-start"
+        placeholder="Куда"
+      />
+      <label for="check-date">Дата:</label>
+      <input type="date" id="check-ate" />
+      <label for="select-ticket">Кол-во билетов:</label>
+      <select id="select-ticket">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+      <button type="submit">Найти</button>
+    </form>
+    <h2>Доступные поезда:</h2>
+    <ul>
+      <li><b>Аэроэкспресс (Сидячие):</b> Маршрут: Москва - Питер</li>
+      <li><b>Аэроэкспресс (Купе):</b> Маршрут: Питер - Москва</li>
+      <li><b>Аэроэкспресс (Сидячие):</b> Маршрут: Питер - Новгород</li>
+    </ul>
+
+    <label for="trainSelection">Выберите маршрут:</label>
+    <select id="trainSelection">
+      <option value="Train A">Аэроэкспресс (Москва - Питер)</option>
+      <option value="Train B">Аэроэкспресс (Питер - Москва)</option>
+      <option value="Train C">Аэроэкспресс (Питер - Новгород)</option>
+    </select>
+    <br />
+
+    <label for="numTickets">Кол-во билетов:</label>
+    <input type="number" id="numTickets" min="1" max="10" />
+    <br />
+
+    <label for="travelDate">Дата:</label>
+    <input type="date" id="travelDate" />
+    <br />
+
+    <label for="carriageSelection">Выберите вагон:</label>
+    <select id="carriageSelection">
+      <option value="Carriage A">Вагон 1</option>
+      <option value="Carriage B">Вагон 2</option>
+    </select>
+    <br />
+
+    <button onclick="checkAvailability()">Проверить Наличие</button>
+    <br />
+    <p id="availabilityMessage"></p>
+
+    <div id="bookingSection" style="display: none">
+      <h2>Детали брони:</h2>
+      <label for="passengerNames">Имена пассажиров:</label>
+      <input type="text" id="passengerNames" />
+      <br />
+
+      <label for="numSeatsToBook">Кол-во билетов:</label>
+      <input type="number" id="numSeatsToBook" min="1" max="10" />
+      <br />
+
+      <h3>Выберите места:</h3>
+      <div id="seatMap"></div>
+      <br />
+
+      <p id="fareDetails"></p>
+
+      <label for="paymentMethod">Оплата:</label>
+      <select id="paymentMethod">
+        <option value="Credit Card">Карта</option>
+        <option value="PayPal">Киви</option>
+      </select>
+      <br />
+
+      <button onclick="bookTickets()">Забронировать</button>
+      <br />
+      <p id="bookingStatus"></p>
+    </div>
+    <script>
+      function checkAvailability() {
+        const carriageSelection =
+          document.getElementById("carriageSelection").value;
+        let availableSeats;
+        let seatCount = 1;
+        if (carriageSelection === "Carriage A") {
+          availableSeats = [
+            [true, true, false, true],
+            [true, true, true, true],
+            [false, true, true, false],
+            [true, false, true, true],
+            [true, true, true, true],
+          ];
+        } else if (carriageSelection === "Carriage B") {
+          availableSeats = [
+            [true, true, true],
+            [true, true, true],
+            [true, true, true],
+            [true, true, true],
+            [true, true, true],
+          ];
+        }
+
+        const seatMapDiv = document.getElementById("seatMap");
+        seatMapDiv.innerHTML = "";
+
+        for (let row = 0; row < availableSeats.length; row++) {
+          const rowDiv = document.createElement("div");
+          for (let seat = 0; seat < availableSeats[row].length; seat++) {
+            const seatCheckbox = document.createElement("input");
+            seatCheckbox.type = "checkbox";
+            seatCheckbox.value = `${row}-${seat}`;
+            seatCheckbox.disabled = !availableSeats[row][seat];
+
+            const seatNumber = document.createElement("span");
+            seatNumber.innerText = availableSeats[row][seat]
+              ? seatCount.toString()
+              : "-";
+            seatNumber.style.marginRight = "5px";
+            seatNumber.style.fontWeight = "bold";
+            rowDiv.appendChild(seatNumber);
+
+            rowDiv.appendChild(seatCheckbox);
+            seatCount++;
+          }
+          seatMapDiv.appendChild(rowDiv);
+        }
+
+        document.getElementById("availabilityMessage").innerText =
+          "Выберите места.";
+        document.getElementById("bookingSection").style.display = "block";
+      }
+
+      function bookTickets() {
+        const train = document.getElementById("trainSelection").value;
+        const numTickets = parseInt(
+          document.getElementById("numTickets").value
+        );
+        const travelDate = document.getElementById("travelDate").value;
+        const passengerNames = document.getElementById("passengerNames").value;
+        const paymentMethod = document.getElementById("paymentMethod").value;
+
+        const selectedSeats = Array.from(
+          document.querySelectorAll('input[type="checkbox"]:checked')
+        );
+        const numSeatsToBook = parseInt(
+          document.getElementById("numSeatsToBook").value
+        );
+        const selectedSeatNumbers = selectedSeats
+          .slice(0, numSeatsToBook)
+          .map((seat) => seat.value)
+          .join(", ");
+
+        const fare = numSeatsToBook * 1200;
+        const bookingDetails = `
+                Поезд: ${train}
+                Дата: ${travelDate}
+                Имена пассажиров: ${passengerNames}
+                Выбранный вагон: ${
+                  document.getElementById("carriageSelection").value
+                }
+                Выбранные места: ${selectedSeatNumbers}
+                Цена: ₽${fare.toFixed(2)}
+                Номер подтверждения: ${generateConfirmationNumber()}
+            `;
+        document.getElementById("fareDetails").innerText = bookingDetails;
+
+        document.getElementById("bookingStatus").innerText =
+          "Бронь сделана. Хорошего пути!";
+      }
+
+      function generateConfirmationNumber() {
+        return Math.floor(Math.random() * 900000) + 100000;
+      }
+    </script>
+  </body>
+</html>
