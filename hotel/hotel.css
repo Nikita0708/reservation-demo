@@ -46,8 +46,8 @@ footer {
 }
 .choose-text {
     position: absolute;
-    right: 100px;
-    top: 100px;
+    left: 90px;
+     top: 450px;
 }
 .room-img {
     width: 300px;
