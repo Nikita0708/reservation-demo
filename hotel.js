@@ -5,7 +5,7 @@ const hotels = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  const main = document.querySelector("main");
+  const main = document.querySelector(".container-hotel");
   // const selectPlace = document.getElementById("select-place");ы
 
   function displayHotels() {

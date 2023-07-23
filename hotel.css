@@ -8,16 +8,22 @@ ul {
 }
 header {
     background-color: #fafafa;
-    text-align: left;
+    text-align: center;
     padding: 1rem;
-    display: flex;
+        display: flex;
     align-items: center;
+    
     & a {
         margin-left: 20px;
         margin-right: 20px;
     color: #000;
     text-decoration: none;
     }
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button {
@@ -31,11 +37,23 @@ main {
 
 footer {
     background-color: #fafafa;
-    text-align: left;
+    text-align: center;
     padding: 1rem;
     & a {
     text-decoration: none;
     color: #000;
+    }
+}
+.container {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0 auto;
+    @media screen and (min-width: 500px) {
+        width: 480px;
+    }
+    @media screen and (min-width: 900px) {
+        width: 900px;
     }
 }
 .first-floor {
@@ -49,7 +67,7 @@ footer {
 }
 .room-desription {
     position: absolute;
-    left: 90px;
+    left: 50px;
     top: 450px;
     display: none;
     width: 300px;
@@ -61,6 +79,12 @@ footer {
 }
 .room-img {
     width: 300px;
+    margin-bottom: 20px;
+}
+.hotel-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 .form-wrap {
     width: 130px;
@@ -76,14 +100,55 @@ footer {
         width: 100px;
     }
 }
+.form-wrap:not(:last-child) {
+    margin-bottom: 15px;
+}
 .hotel-description {
     width: 300px;
 }
 .show-hotel {
+    display: block;
+    border-radius: 10px;
+    width: fit-content;
     margin-top: 30px;
     text-decoration: none;
     padding: 20px;
     border: 1px solid black;
     background-color: grey;
     color: #fff;
+}
+.hotel-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hotel-img {
+    width: 300px;
+    margin-bottom: 15px;
+}
+main .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.plan-wrap > li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.book-btn {
+    width: 100px;
+    height: 40px;
+    background-color: grey;
+    border: 1px solid black;
+    color: aliceblue;
+}
+.choose-link {
+    display: block;
+    padding: 20px;
+    width: fit-content;
+    text-decoration: none;
+    color: #000;
+    background-color: lightcyan;
+    border: 1px solid black;
 }
