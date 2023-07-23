@@ -1,4 +1,4 @@
-const rooms = document.querySelectorAll('.first-floor');
+const rooms = document.querySelectorAll('.floor-img-wrap');
 const roomDescriptions = document.querySelectorAll('.room-desription');
 const chooseRoom = document.querySelector('.choose-text');
 

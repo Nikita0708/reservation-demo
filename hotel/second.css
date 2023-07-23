@@ -1,0 +1,42 @@
+.first-floor:first-child>.floor-img-wrap {
+    position: absolute;
+    top: 26px;
+    left: 227px;
+}
+
+.first-floor:nth-child(2)>.floor-img-wrap {
+    position: absolute;
+    top: 26px;
+    left: 337px;
+}
+.first-floor:nth-child(3)>.floor-img-wrap {
+    position: absolute;
+    top: 195px;
+    left: 227px;
+}
+.first-floor:nth-child(4)>.floor-img-wrap {
+    position: absolute;
+    top: 195px;
+    left: 337px;
+}
+.first-floor:nth-child(5)>.floor-img-wrap {
+    position: absolute;
+    top: 220px;
+    left: 447px;
+}
+.first-floor:nth-child(6)>.floor-img-wrap {
+    position: absolute;
+    top: 220px;
+    left: 515px;
+}
+.first-floor:nth-child(7)>.floor-img-wrap {
+    position: absolute;
+    top: 195px;
+    left: 590px;
+}
+
+.first-floor:last-child>.floor-img-wrap {
+    position: absolute;
+    top: 67px;
+    left: 590px;
+}

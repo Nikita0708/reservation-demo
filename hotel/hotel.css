@@ -3,7 +3,9 @@ body {
     margin: 0;
     padding: 0;
 }
-
+ul {
+    list-style: none;
+}
 header {
     background-color: #000;
     color: #fff;
@@ -26,33 +28,27 @@ footer {
     text-align: center;
     padding: 1rem;
 }
-.plan-img {
-    width: 100px;
-}
-.floor-wrap {
-    width: 400px;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr 1fr;
-}
 .first-floor {
+    width: 144px;
     background-color: transparent;
     transition: .2s;
-    &:hover {
-        background-color: lightblue;
-    }
+    
 }
 .first-floor__active {
     background-color: lightblue;
 }
 .room-desription {
     position: absolute;
-    right: 100px;
-    top: 100px;
+    left: 90px;
+    top: 450px;
     display: none;
+    width: 300px;
 }
 .choose-text {
     position: absolute;
     right: 100px;
     top: 100px;
+}
+.room-img {
+    width: 300px;
 }

@@ -1,0 +1,17 @@
+.first-floor:first-child>.floor-img-wrap {
+    position: absolute;
+    top: 265px;
+    left: 312px;
+}
+
+.first-floor:nth-child(2)>.floor-img-wrap {
+    position: absolute;
+    top: 90px;
+    right: 652px;
+}
+
+.first-floor:last-child>.floor-img-wrap {
+    position: absolute;
+    top: 265px;
+    left: 464px;
+}
