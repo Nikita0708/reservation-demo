@@ -7,7 +7,7 @@
 .first-floor:nth-child(2)>.floor-img-wrap {
     position: absolute;
     top: 90px;
-    right: 925px;
+    left: 829px;
 }
 
 .first-floor:last-child>.floor-img-wrap {
